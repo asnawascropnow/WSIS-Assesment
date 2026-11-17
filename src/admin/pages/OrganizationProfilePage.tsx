@@ -32,7 +32,7 @@ export function OrganizationProfilePage() {
   return (
     <div className="admin-stack">
       <div>
-        <button type="button" className="admin-btn small" onClick={() => navigate('/admin/organizations')}>
+        <button type="button" className="admin-btn small" onClick={() => navigate('/organizations')}>
           <ArrowLeft size={14} /> Back to directory
         </button>
       </div>
@@ -81,7 +81,7 @@ export function OrganizationProfilePage() {
                       <button
                         type="button"
                         className="admin-btn small"
-                        onClick={() => navigate(`/admin/assessments/${item.assessment_type}/${item.id}`)}
+                        onClick={() => navigate(`/assessments/${item.assessment_type}/${item.id}`)}
                       >
                         <ExternalLink size={13} /> Open report
                       </button>

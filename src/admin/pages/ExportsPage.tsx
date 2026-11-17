@@ -189,7 +189,7 @@ export function ExportsPage() {
                           type="button"
                           className="admin-row-link"
                           style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer' }}
-                          onClick={() => navigate(`/admin/assessments/${item.assessment_type}/${item.id}`)}
+                          onClick={() => navigate(`/assessments/${item.assessment_type}/${item.id}`)}
                         >
                           {item.organization_name || 'Untitled'}
                         </button>
@@ -222,7 +222,7 @@ export function ExportsPage() {
                           <button
                             type="button"
                             className="admin-btn small"
-                            onClick={() => navigate(`/admin/assessments/${item.assessment_type}/${item.id}`)}
+                            onClick={() => navigate(`/assessments/${item.assessment_type}/${item.id}`)}
                           >
                             <ExternalLink size={13} /> Open
                           </button>

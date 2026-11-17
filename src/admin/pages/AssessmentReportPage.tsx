@@ -102,7 +102,7 @@ export function AssessmentReportPage() {
     setDeleting(true)
     try {
       await adminApi('assessments.delete', { body: { type, id } })
-      navigate('/admin/assessments')
+      navigate('/assessments')
     } catch (caught) {
       setDeleteError(caught instanceof Error ? caught.message : 'Could not delete the assessment.')
     } finally {
@@ -154,7 +154,7 @@ export function AssessmentReportPage() {
   return (
     <div className="admin-stack">
       <div>
-        <button type="button" className="admin-btn small" onClick={() => navigate('/admin/assessments')}>
+        <button type="button" className="admin-btn small" onClick={() => navigate('/assessments')}>
           <ArrowLeft size={14} /> Back to register
         </button>
       </div>

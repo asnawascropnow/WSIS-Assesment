@@ -31,10 +31,7 @@ function FullScreenLoading() {
 function RequireAdmin({ children }: { children: ReactNode }) {
   const { status } = useAdminAuth()
   if (status === 'loading') return <FullScreenLoading />
-  if (status !== 'authenticated') {
-    const base = window.location.pathname.startsWith('/assessment/admin') ? '/assessment/admin' : '/admin'
-    return <Navigate to={`${base}/login`} replace />
-  }
+  if (status !== 'authenticated') return <Navigate to="/login" replace />
   return <>{children}</>
 }
 

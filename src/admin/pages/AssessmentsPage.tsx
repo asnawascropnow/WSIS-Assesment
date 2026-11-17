@@ -272,7 +272,7 @@ export function AssessmentsPage() {
                         <button
                           type="button"
                           className="admin-btn small"
-                          onClick={() => navigate(`/admin/assessments/${item.assessment_type}/${item.id}`)}
+                          onClick={() => navigate(`/assessments/${item.assessment_type}/${item.id}`)}
                         >
                           <ExternalLink size={13} /> Open
                         </button>

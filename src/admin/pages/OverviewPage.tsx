@@ -38,22 +38,22 @@ export function OverviewPage() {
     <div className="admin-stack">
       <section className="admin-section">
         <div className="admin-stat-grid">
-          <button type="button" className="admin-stat accent-mint" onClick={() => navigate('/admin/assessments')}>
+          <button type="button" className="admin-stat accent-mint" onClick={() => navigate('/assessments')}>
             <span className="admin-stat-value">{stats.total}</span>
             <span className="admin-stat-label">Total assessments</span>
           </button>
-          <button type="button" className="admin-stat" onClick={() => navigate('/admin/organizations')}>
+          <button type="button" className="admin-stat" onClick={() => navigate('/organizations')}>
             <span className="admin-stat-value">{stats.organizations}</span>
             <span className="admin-stat-label">Organizations</span>
           </button>
-          <button type="button" className="admin-stat" onClick={() => navigate('/admin/documents')}>
+          <button type="button" className="admin-stat" onClick={() => navigate('/documents')}>
             <span className="admin-stat-value">{stats.documents}</span>
             <span className="admin-stat-label">Uploaded documents</span>
           </button>
           <button
             type="button"
             className="admin-stat accent-pink"
-            onClick={() => navigate('/admin/documents?verification=invalid')}
+            onClick={() => navigate('/documents?verification=invalid')}
           >
             <span className="admin-stat-value">{stats.invalidDocuments}</span>
             <span className="admin-stat-label">
@@ -63,7 +63,7 @@ export function OverviewPage() {
           <button
             type="button"
             className="admin-stat accent-pink"
-            onClick={() => navigate('/admin/documents?verification=missing')}
+            onClick={() => navigate('/documents?verification=missing')}
           >
             <span className="admin-stat-value">{stats.missingStorage}</span>
             <span className="admin-stat-label">
@@ -83,7 +83,7 @@ export function OverviewPage() {
               key={type}
               type="button"
               className="admin-stat"
-              onClick={() => navigate(`/admin/assessments?type=${type}`)}
+              onClick={() => navigate(`/assessments?type=${type}`)}
             >
               <span className="admin-stat-value">{byType[type] ?? 0}</span>
               <span className="admin-stat-label">{ASSESSMENT_TYPE_LABEL[type]}</span>
@@ -102,7 +102,7 @@ export function OverviewPage() {
               key={status}
               type="button"
               className="admin-stat"
-              onClick={() => navigate(`/admin/assessments?status=${status}`)}
+              onClick={() => navigate(`/assessments?status=${status}`)}
             >
               <span className="admin-stat-value">{byStatus[status] ?? 0}</span>
               <span className="admin-stat-label">{REVIEW_STATUS_LABEL[status]}</span>
@@ -116,18 +116,18 @@ export function OverviewPage() {
           <h2>Quick actions</h2>
         </div>
         <div className="admin-inline">
-          <button type="button" className="admin-btn mint" onClick={() => navigate('/admin/assessments?status=submitted')}>
+          <button type="button" className="admin-btn mint" onClick={() => navigate('/assessments?status=submitted')}>
             <ListChecks size={15} /> Review new submissions
           </button>
-          <button type="button" className="admin-btn" onClick={() => navigate('/admin/documents')}>
+          <button type="button" className="admin-btn" onClick={() => navigate('/documents')}>
             <FolderLock size={15} /> Manage documents
           </button>
           {roleCan(identity?.role, 'exports.run') ? (
-            <button type="button" className="admin-btn" onClick={() => navigate('/admin/exports')}>
+            <button type="button" className="admin-btn" onClick={() => navigate('/exports')}>
               <FileSpreadsheet size={15} /> Generate reports
             </button>
           ) : null}
-          <button type="button" className="admin-btn" onClick={() => navigate('/admin/settings')}>
+          <button type="button" className="admin-btn" onClick={() => navigate('/settings')}>
             <HardDrive size={15} /> Settings &amp; audit
           </button>
         </div>
@@ -138,7 +138,7 @@ export function OverviewPage() {
           <div className="admin-card">
             <div className="admin-section-head">
               <h2>Recent submissions</h2>
-              <button type="button" className="admin-btn small" onClick={() => navigate('/admin/assessments')}>
+              <button type="button" className="admin-btn small" onClick={() => navigate('/assessments')}>
                 View all
               </button>
             </div>
@@ -165,7 +165,7 @@ export function OverviewPage() {
                             type="button"
                             className="admin-row-link"
                             style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer' }}
-                            onClick={() => navigate(`/admin/assessments/${item.assessment_type}/${item.id}`)}
+                            onClick={() => navigate(`/assessments/${item.assessment_type}/${item.id}`)}
                           >
                             {item.organization_name || 'Untitled'}
                           </button>

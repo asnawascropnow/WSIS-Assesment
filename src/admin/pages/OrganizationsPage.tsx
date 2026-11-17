@@ -114,7 +114,7 @@ export function OrganizationsPage() {
                         type="button"
                         className="admin-btn small"
                         onClick={() =>
-                          navigate(`/admin/organizations/${row.assessment_type}/${encodeURIComponent(row.organization_name)}`)
+                          navigate(`/organizations/${row.assessment_type}/${encodeURIComponent(row.organization_name)}`)
                         }
                       >
                         <ExternalLink size={13} /> View profile
