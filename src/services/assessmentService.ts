@@ -1,4 +1,4 @@
-import { supabase } from '../supabase/client'
+import { isSupabaseConfigured, supabase } from '../supabase/client'
 import { ALLOWED_ATTACHMENT_TYPES, MAX_ATTACHMENT_SIZE_BYTES } from '../constants/assessment'
 import type { AssessmentType } from '../types'
 
@@ -95,6 +95,10 @@ export async function submitAssessment(
   const uploads: PendingUpload[] = []
 
   try {
+    if (!isSupabaseConfigured) {
+      throw new Error('Assessment submissions are not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in .env.local, then restart the development server.')
+    }
+
     onProgress?.({ stage: 'preparing', message: 'Preparing submission...', percent: 5, uploaded: 0, total: 0 })
 
     const assessmentId = crypto.randomUUID()

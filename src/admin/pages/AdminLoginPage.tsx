@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Navigate } from 'react-router-dom'
 import { LogIn, ShieldCheck } from 'lucide-react'
 import { useAdminAuth } from '../auth/useAdminAuth'
+import { isSupabaseConfigured } from '../../supabase/client'
 
 export function AdminLoginPage() {
   const { signIn, signOut, status, error: authError } = useAdminAuth()
@@ -33,6 +34,15 @@ export function AdminLoginPage() {
         </span>
         <h1>Admin Sign In</h1>
         <p>Sign in with your administrator account to manage water assessment submissions.</p>
+
+        {!isSupabaseConfigured ? (
+          <div className="admin-state error" style={{ marginBottom: 16 }} role="alert">
+            <strong>Local Supabase setup is required</strong>
+            <p style={{ margin: '0 0 12px' }}>
+              Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_PUBLISHABLE_KEY</code> to <code>.env.local</code>, then restart Vite.
+            </p>
+          </div>
+        ) : null}
 
         {status === 'error' && authError ? (
           <p className="admin-state error" style={{ margin: '0 0 16px' }} role="alert">
@@ -80,7 +90,7 @@ export function AdminLoginPage() {
               {error}
             </p>
           ) : null}
-          <button type="submit" className="admin-btn primary" disabled={submitting}>
+          <button type="submit" className="admin-btn primary" disabled={submitting || !isSupabaseConfigured}>
             <LogIn size={16} /> {submitting ? 'Signing in…' : 'Sign in'}
           </button>
         </form>

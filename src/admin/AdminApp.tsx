@@ -53,7 +53,6 @@ export function AdminApp() {
       <BrowserRouter basename={base}>
         <Routes>
           <Route path="/login" element={<AdminLoginPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route
             path="/"
             element={
@@ -63,17 +62,6 @@ export function AdminApp() {
             }
           >
             <Route index element={<Navigate to="assessments" replace />} />
-            <Route index path="admin" element={<Navigate to="assessments" replace />} />
-          </Route>
-          <Route
-            path="/admin"
-            element={
-              <RequireAdmin>
-                <AdminLayout />
-              </RequireAdmin>
-            }
-          >
-            <Route index element={<CapabilityGate capability="assessments.read"><OverviewPage /></CapabilityGate>} />
             <Route
               path="assessments"
               element={
@@ -138,7 +126,7 @@ export function AdminApp() {
                 </CapabilityGate>
               }
             />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="assessments" replace />} />
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
